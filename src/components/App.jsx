@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { FeedbackOptions } from "./FeedbackOptions/FeedbackOptions";
 import { Statistics } from "./Statistics/Statistics";
 import { Notification } from "./Notification/Notification";
+import { Section } from "./Section/Section";
 import { Box } from 'components/Box';
 
   
@@ -37,15 +38,17 @@ import { Box } from 'components/Box';
 
     render() {
       const total = this.FeedbackTotalValueCounter();
-      const positive = this.FeedbackPercentageCounter();
-      console.log(positive);
-
+      const positive = Math.floor(this.FeedbackPercentageCounter());
+      
       return (
-        <Box pt={3} pb={3}>
-          <FeedbackOptions
+        <Box pt={3} pb={3} pl={4} >
+          <Section title={"Please leave feedback"}>
+            <FeedbackOptions
             options={Object.keys(this.state)}
             onLeaveFeedback={this.FeedbackItemCounter} />
-          {total > 0 ?
+          </Section>
+          <Section title={"Statistics"}>
+            {total > 0 ?
           <Statistics 
             good={this.state.good}
             neutral={this.state.neutral}
@@ -53,6 +56,7 @@ import { Box } from 'components/Box';
             total={total}
               positivePercentage={positive} />
             : <Notification message={"There is no feedback"} />}
+          </Section>
         </Box>
       );
     };

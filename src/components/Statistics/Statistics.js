@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { StatisticsItem, StatisticsItemTotal } from './Statistics.styled';
 import { Box } from 'components/Box';
 
 export const Statistics = ({
@@ -9,14 +10,14 @@ export const Statistics = ({
     positivePercentage }) => {
     return (
         <Box>
-            <Box es="ul">
-                <li>Good: {good}</li>
-                <li>Neutral: {neutral}</li>
-                <li>Bad: {bad}</li>
+            <Box es="ul" mb={4}>
+                <StatisticsItem>Good: {good}</StatisticsItem>
+                <StatisticsItem>Neutral: {neutral}</StatisticsItem>
+                <StatisticsItem>Bad: {bad}</StatisticsItem>
             </Box>
             <Box es="ul">
-                <li>Total: {total}</li>
-                <li>Positive feedback: {positivePercentage}%</li>
+                <StatisticsItemTotal>Total: {total}</StatisticsItemTotal>
+                <StatisticsItemTotal>Positive feedback: {positivePercentage}%</StatisticsItemTotal>
                 
             </Box>
         </Box>
